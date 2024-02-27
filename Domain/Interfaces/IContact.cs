@@ -9,6 +9,9 @@ namespace Domain.Interfaces
 {
     public interface IContact
     {
+        ValueTask<Contact> ADD(Contact contact);
         ValueTask<IEnumerable<Contact>> GetAll();
+        ValueTask<bool> SaveAll();
+
     }
 }

@@ -22,9 +22,10 @@ namespace Infrastructure.Persistence
             throw new NotImplementedException();
         }
 
-        public ValueTask<TEntity> ADDAsync(TEntity Model)
+        public async ValueTask<TEntity> ADDAsync(TEntity Model)
         {
-            throw new NotImplementedException();
+            await _entity.AddAsync(Model);
+            return Model;
         }
 
         public void AddRange(List<TEntity> entities)

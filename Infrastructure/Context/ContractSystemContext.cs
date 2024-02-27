@@ -14,6 +14,7 @@ namespace Infrastructure.Context
         public virtual DbSet<Contact> Contacts { get; set; }
 
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseCollation("Arabic_CI_AS");
@@ -25,7 +26,6 @@ namespace Infrastructure.Context
                 entity.ToTable("CONTACT");
 
                 entity.Property(e => e.Concod)
-                    .ValueGeneratedNever()
                     .HasComment("Contact Code")
                     .HasColumnName("CONCOD");
                 entity.Property(e => e.Address)

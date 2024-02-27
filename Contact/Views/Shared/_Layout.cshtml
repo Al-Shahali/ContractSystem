@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Contact</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/datatable/datatables-bs4/css/dataTables.bootstrap4.min.css">
+   @*  <link rel="stylesheet" href="~/lib/datatable/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/datatable/datatables-buttons/css/buttons.bootstrap4.min.css"> *@
+    <link href="~/lib/fontawesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Contact.styles.css" asp-append-version="true" />
 </head>
@@ -30,8 +34,8 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container-fluid">
+        <main role="main" >
             @RenderBody()
         </main>
     </div>
@@ -42,9 +46,24 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/microsoft-signalr/signalr.min.js"></script>
     <script src="~/lib/microsoft-signalr/clientsconnector.js"></script>
+
+    @* datatable *@
+    <script src="~/lib/datatable/datatables/jquery.dataTables.js"></script>
+    <script src="~/lib/fontawesome/js/all.min.js"></script>
+    <script src="~/lib/datatable/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+@*     <script src="~/lib/datatable/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatable/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/datatable/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib/datatable/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/lib/datatable/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/lib/datatable/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/lib/datatable/datatables-buttons/js/buttons.colVis.min.js"></script>
+ *@
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
