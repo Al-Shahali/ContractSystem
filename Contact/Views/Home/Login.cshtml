@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css">
+
+</head>
+
+<body>
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="login">
+
+            <label for="chk" aria-hidden="true">Login</label>
+            <label class="validation hide">invalid user or password</label>
+            <input id="name" type="text" name="name" placeholder="Name" required="">
+            <input id="password" type="password" name="Password" placeholder="Password" required="">
+            <button onclick="Login()">Login</button>
+
+        </div>
+
+        <div class="signup">
+            <form>
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input type="text" name="txt" placeholder="User name" required="">
+                <input type="email" name="email" placeholder="Email" required="">
+                <input type="password" name="pswd" placeholder="Password" required="">
+                <button>Sign up</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/views/login.js"></script>
+</body>
+
+
+</html>

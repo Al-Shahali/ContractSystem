@@ -28,8 +28,8 @@ body {
 thead, th, td {
     border: 1px solid #dee2e6;
 }
-.hide{
-    display:none;
+.hide , .editing {
+    display: none;
 }
 .Mandatory {
     font-size: 1.2em;
@@ -39,4 +39,12 @@ thead, th, td {
 .Validation {
     font-size: 0.8em;
     color: red;
+}
+
+.rowselect{
+    background-color:#8ee4ff !important;
+}
+
+.rowedite {
+    background-color:  darkcyan !important;
 }

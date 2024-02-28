@@ -18,25 +18,29 @@
             @foreach (var item in Model)
             {
 
-                <tr>
+                <tr id="tr-@item.Concod" onclick="RowSelect('@item.Concod');">
                     <td>@item.Name</td>
                     <td>
                         @item.Phone
                     </td>
                     <td>@item.Address</td>
                     <td> @item.Note.Substring(0, Math.Min(item.Note.Length, 50))</td>
-                    <td>X</td>
+                    <td>
+                        <a id="Ed-@item.Concod" class="btn btn-success" onclick="Edite('@item.Concod');">
+                            Edite
+                        </a>
+                    </td>
                 </tr>
             }
         }
     </tbody>
     <tfoot>
         <tr>
-            <th>Rendering engine</th>
-            <th>Browser</th>
-            <th>Platform(s)</th>
-            <th>Engine version</th>
-            <th>CSS grade</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Note</th>
+            <th>Operation</th>
         </tr>
     </tfoot>
 </table>

@@ -70,6 +70,53 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="EditeData" tabindex="-1" role="dialog" aria-labelledby="AddDataLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddDataLabel">New Contact</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="Name" class="col-form-label">Name</label>
+                            <label class="Mandatory">*</label>
+                            <input type="text" class="form-control" id="Name">
+                            <label id="NameErr" class="Validation">@Errdes100</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="Phone" class="col-form-label">Phone</label>
+                            <label class="Mandatory">*</label>
+                            <input type="text" class="form-control" id="Phone">
+                            <label id="PhoneErr" class="Validation">@Errdes100</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="Address" class="col-form-label">Address</label>
+                            <label class="Mandatory">*</label>
+                            <input type="text" class="form-control" id="Address">
+                            <label id="AddressErr" class="Validation">@Errdes100</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="Note" class="col-form-label">Note</label>
+                            <textarea class="form-control" id="Note"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Close()">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ADD()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts {
     <script src="~/js/views/index.js"></script>
 }

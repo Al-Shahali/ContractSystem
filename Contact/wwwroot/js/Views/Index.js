@@ -11,17 +11,23 @@ function LoadTableData() {
         contentType: 'application/json',
         success: function (result) {
             $('#Div_table').html(result);
+            DataTableClick();
             $("#conTable").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "pageLength": 5
+                "pageLength": 5,
+                select: true
             });
         },
         error: function (data) {
 
         }
-    });
+    }).done(function () {
+        connection.invoke("CheckEdite").catch(function (error) {
+            return console.error(error);
+        });
+    })
 }
 
 function New() {
@@ -83,3 +89,36 @@ function ADD() {
 function Close() {
     $("#AddData").modal('hide');
 }
+
+function RowSelect(ConCod) {
+    connection.invoke("RowSelect", ConCod).catch(function (error) {
+        return console.error(error);
+    });
+}
+
+connection.on("RowSelected", function (ConCod) {
+    //console.log(('#Ed-' + ConCod));
+    //$('#Ed-' + ConCod).addClass('hide');
+    $('table tbody tr').each(function () {
+        $(this).siblings().removeClass("rowedite");
+    });
+    $('#conTable tbody #tr-' + ConCod).addClass("rowedite");;
+});
+
+function Edite(ConCod) {
+    connection.invoke("RowEdite", ConCod).catch(function (error) {
+        return console.error(error);
+    });
+}
+
+connection.on("RowEditing", function (Editing) {
+    $('table tbody tr').each(function () {
+        $(this).siblings().removeClass("editing");
+    });
+    Editing.forEach(function (ele) {
+        console.log('#Ed-' + ele);
+
+        $('#Ed-' + ele).addClass('editing');
+    });
+ 
+});
