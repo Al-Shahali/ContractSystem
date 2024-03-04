@@ -4,8 +4,9 @@ using Infrastructure.Services;
 using System.Diagnostics.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
-InfrastractureRegister.AddServices(builder);
-ApplicationRegister.AddServices(builder);
+
+builder.AddInfrastractureServices();
+builder.AddApplicationServices();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();

@@ -11,39 +11,71 @@ namespace Contact.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IContact _icontact;
-        public HomeController(ILogger<HomeController> logger,IContact contact)
+        public HomeController(ILogger<HomeController> logger, IContact contact)
         {
             _logger = logger;
             _icontact = contact;
         }
         #region Contact
-        [IsLogIn]
+        //[IsLogIn]
         public IActionResult Index()
         {
             return View();
         }
 
-        public async Task<IActionResult> _Contact(int pageindex=0)
+        public async Task<IActionResult> _Contact(int pageindex = 0)
         {
-            var data =await _icontact.GetAll();
-            var x = data.Count();
-            return View(data.ToList());
+            var data = await _icontact.GetAll();
+            return View(data);
         }
         [HttpPost]
-        public async Task<JsonResult> ADDContact([FromBody]Domain.Models.Contact  contact)
+        public async Task<JsonResult> ADDContact([FromBody] Domain.Models.Contact contact)
         {
-           var result= await _icontact.ADD(contact);
-           await _icontact.SaveAll();
+            var result = await _icontact.ADD(contact);
+            await _icontact.SaveAll();
             return Json(contact);
         }
 
-        #endregion
+        [HttpGet]
+        public JsonResult GetContact(int ConCod)
+        {
+            var result = _icontact.GetContact(ConCod).Result;
+            return Json(result);
+        }
 
+        [HttpPost]
+        public async Task<JsonResult> UPDContact([FromBody] Domain.Models.Contact contact)
+        {
+            var _contact = _icontact.GetContact(contact.Concod).Result;
+            if (_contact != null)
+            {
+                _contact.Name = contact.Name;
+                _contact.Address = contact.Address;
+                _contact.Note = contact.Note;
+                _icontact.UPDContact(_contact);
+                await _icontact.SaveAll();
+            }
+            return Json(contact);
+        }
+        [HttpGet]
+        public async Task DelContactAsync(int ConCod)
+        {
+            _icontact.DELContact(ConCod);
+            await _icontact.SaveAll();
+        }
+
+        #endregion
+        //[IsLogIn]
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
         #region Login
         public IActionResult Login()
         {
             int? usrcod = Convert.ToInt32(Get("usrcod"));
-            if(usrcod.HasValue)
+            if (usrcod.HasValue)
             {
                 Redirect("Home/Index");
             }
@@ -76,7 +108,7 @@ namespace Contact.Controllers
             return HttpContext.Request.Cookies[Key];
         }
 
-        public void Set(string key,string value, int? expiretime)
+        public void Set(string key, string value, int? expiretime)
         {
             CookieOptions options = new();
             if (expiretime.HasValue)

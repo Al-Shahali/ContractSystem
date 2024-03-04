@@ -11,9 +11,9 @@ namespace Application.Services
 {
     public static  class ApplicationRegister
     {
-        public static void AddServices(this WebApplicationBuilder builder)
+        public static void AddApplicationServices(this WebApplicationBuilder builder)
         {
-            builder.Services.AddTransient<IContact, BLContact>();
+            builder.Services.AddScoped<IContact, BLContact>();
         }
     }
 }

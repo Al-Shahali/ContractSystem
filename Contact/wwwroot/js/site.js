@@ -13,7 +13,7 @@ $(function () {
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-        "pageLength":5
+        "pageLength":10
     });
     //$('#example2').DataTable({
     //    "paging": true,

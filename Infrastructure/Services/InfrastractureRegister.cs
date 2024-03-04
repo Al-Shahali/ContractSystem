@@ -10,13 +10,13 @@ namespace Infrastructure.Services
 {
     public static class InfrastractureRegister
     {
-        public static void AddServices(this WebApplicationBuilder builder)
+        public static void AddInfrastractureServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddDbContext<ContractSystemContext>(options =>
             options.UseSqlServer(
                builder.Configuration.GetConnectionString("DefaultConnections")));
 
-            builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
     }
 }
